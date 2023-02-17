@@ -1,0 +1,53 @@
+# include "sort.h"
+void swap(listint_t *, listint_t *);
+/**
+ *insertion_sort_list - insert sort on a doubly linked list
+ *@list: a double pointer to head of a list
+ */
+void insertion_sort_list(listint_t **list)
+{
+listint_t *head, *current, *previous;
+head = current = previous = NULL;
+if (list == NULL || *list == NULL || (*list)->next == NULL)
+return;
+head = *list;
+while (head->next != NULL)
+{
+if (head->n > head->next->n)
+{
+current = head->next;
+swap(head, head->next);
+if (current->previous == NULL)
+*list = current;
+print_list((const listint_t *) *list);
+while (current->previous != NULL)
+{
+if (current->n >= current->previous->n)
+break;
+previous = current->previous;
+swap(previous, current);
+if (current->previous == NULL)
+*list = current;
+print_list((const listint_t *) *list);
+}
+}
+else
+head = head->next;
+}
+}
+/**
+ *swap - a function that swaps 2 nodes
+ *@left: the left node to swap
+ *@right: the right node to swap
+ */
+void swap(listint_t *left, listint_t *right)
+{
+if (left->previous != NULL)
+left->previous->next = right;
+if (right->next != NULL)
+right->next->previous = left;
+left->next = right->next;
+right->next = left->next;
+left->previous = right;
+right->next = left;
+}
