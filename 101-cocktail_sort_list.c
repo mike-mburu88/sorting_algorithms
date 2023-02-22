@@ -1,16 +1,14 @@
 #include "sort.h"
 
-void swap(listint_t *, listint_t *); 
+void swap(listint_t *, listint_t *);
 void cocktail_sort_list(listint_t **list);
 
 /**
  * swap - Swap a node in a listint_t doubly-linked list
  * list of integers with the node ahead of it.
- * @list: A pointer to the head of a doubly-linked list of integers.
- * @tail: A pointer to the tail of the doubly-linked list.
- * @shaker: A pointer to the current swapping node of the cocktail shaker algo.
- */
-
+ * @right: A pointer to the head of a doubly-linked list of integers.
+ * @left: A pointer to the tail of the doubly-linked list.
+  */
 void swap(listint_t *left, listint_t *right)
 {
 if (left->prev != NULL)
